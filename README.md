@@ -2,6 +2,13 @@
 
 A modern Next.js starter template with Sentry integration for error tracking and performance monitoring. Perfect for rapid prototyping and vibe coding sessions.
 
+**🎯 Sentryを統合することで、エラーに悩まされることが少なくなり、開発に集中できます！**
+- リアルタイムエラー検知で問題を素早く発見
+- 詳細なスタックトレースで原因を特定
+- パフォーマンス監視で最適化ポイントを把握
+
+**🤖 さらに、Sentry MCP統合により、AIアシスタントが直接Sentryのエラー情報にアクセスして解決策を提案できます！**
+
 ## 📋 Prerequisites
 
 - Node.js 22.x
@@ -68,6 +75,8 @@ Open [http://localhost:3000](http://localhost:3000) to see your app running!
 
 ### File Structure
 ```
+├── .cursor/
+│   └── mcp.json                        # Cursor MCP server config (project-specific)
 ├── src/
 │   ├── app/
 │   │   ├── components/
@@ -79,7 +88,8 @@ Open [http://localhost:3000](http://localhost:3000) to see your app running!
 ├── sentry.server.config.ts             # Server-side Sentry config
 ├── sentry.edge.config.ts               # Edge runtime Sentry config
 ├── instrumentation.ts                  # Next.js instrumentation hook
-└── next.config.ts                      # Next.js + Sentry configuration
+├── next.config.ts                      # Next.js + Sentry configuration
+└── .nvmrc                              # Node.js version specification
 ```
 
 ## 🧪 Testing Sentry Integration
@@ -89,6 +99,66 @@ The home page includes test buttons to verify Sentry is working:
 - **Test Sentry Message** - Sends a test message to Sentry
 
 After clicking these buttons, check your Sentry dashboard to see the captured events.
+
+## 🤖 Sentry MCP Integration
+
+This template includes Sentry MCP (Model Context Protocol) server configuration, allowing AI assistants to directly access your Sentry data for enhanced debugging assistance.
+
+### Supported AI Clients
+
+- **Cursor**: Use the included `mcp.json` configuration
+- **Claude Desktop**: Use the `claude_desktop_config.json` configuration
+- **Claude.ai**: Add `https://mcp.sentry.dev/sse` in Settings → Profile → Integrations
+- **Windsurf**: Configure via Cascade (CMD + L)
+- **VS Code with GitHub Copilot**: Add server via `CMD+Shift+P` → `MCP: Add Server`
+
+### Setup MCP Integration
+
+#### For Cursor
+
+**このプロジェクトには既にMCP設定が含まれています！**
+
+- `.cursor/mcp.json` ファイルにSentry MCPサーバーが設定済み
+- プロジェクトを開くだけで自動的にSentry MCPが利用可能
+- 追加の設定は不要です
+
+#### その他のクライアント
+- **Claude.ai**: Settings → Profile → Integrations で `https://mcp.sentry.dev/sse` を追加
+- **Windsurf**: Cascade (CMD + L) の "Configure MCP" オプション
+- **VS Code with GitHub Copilot**: `CMD+Shift+P` → `MCP: Add Server`
+
+### Example AI Prompts with MCP
+
+Once configured, you can ask your AI assistant:
+- "Tell me about the issues in my project"
+- "Check Sentry for errors in `file.tsx` and propose solutions"
+- "Diagnose issue `[issue-id]` and propose solutions"
+- "Use Sentry's Seer to analyze and fix issue `[issue-id]`"
+- "Create a new Sentry project for `service-name`"
+
+### Authentication
+
+The MCP server will prompt for OAuth authentication with Sentry when first accessed by your AI client.
+
+### MCP設定の確認方法
+
+1. **Cursor設定画面で確認**:
+   - Cursor → Settings → MCP
+   - "Available Tools" セクションでSentryツールが表示されることを確認
+
+2. **ログの確認**:
+   - View → Output → "Cursor MCP" を選択
+   - エラーメッセージや接続状況を確認
+
+### トラブルシューティング
+
+**"Failed to create client" エラーの場合**:
+- Node.js 18以上がインストールされていることを確認
+- `which npx` でnpxのパスを確認し、フルパスを使用
+
+**サーバー接続エラーの場合**:
+- インターネット接続を確認
+- `https://mcp.sentry.dev/sse` にアクセス可能か確認
 
 ## 🎨 Customization
 
