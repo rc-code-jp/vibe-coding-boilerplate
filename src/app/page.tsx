@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SentryTestButton from "./components/SentryTestButton";
 
 export default function Home() {
   return (
@@ -24,6 +25,14 @@ export default function Home() {
             Save and see your changes instantly.
           </li>
         </ol>
+
+        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">Sentry Integration Test</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            Test Sentry error tracking and logging functionality
+          </p>
+          <SentryTestButton />
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a

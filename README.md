@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vibe Coding Boilerplate
 
-## Getting Started
+A modern Next.js starter template with Sentry integration for error tracking and performance monitoring. Perfect for rapid prototyping and vibe coding sessions.
 
-First, run the development server:
+## 📋 Prerequisites
+
+- Node.js 22.x
+- npm (comes with Node.js)
+
+## 🚀 Quick Start
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/vibe-coding-boilerplate.git
+cd vibe-coding-boilerplate
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Sentry (Optional but Recommended)
+
+1. Create a Sentry account at [sentry.io](https://sentry.io)
+2. Create a new Next.js project in your Sentry dashboard
+3. Copy your DSN from the project settings
+4. Create a `.env.local` file in the root directory:
+
+```bash
+# Sentry Configuration (Required)
+NEXT_PUBLIC_SENTRY_DSN=https://your-dsn@sentry.io/your-project-id
+
+# Optional: For source map uploads in production
+SENTRY_ORG=your-org-name
+SENTRY_PROJECT=your-project-name
+SENTRY_AUTH_TOKEN=your-auth-token
+```
+
+> **Note**: If you skip Sentry setup, the app will still work perfectly. Error tracking features will simply be disabled.
+
+### 4. Start Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your app running!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 What's Included
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Core Technologies
+- **Next.js 15** - React framework with App Router
+- **React 19** - Latest React features
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS framework
+- **Sentry** - Error tracking and performance monitoring
 
-## Learn More
+### Pre-configured Features
+- ✅ **Error Tracking** - Automatic capture of JavaScript errors and exceptions
+- ✅ **Performance Monitoring** - Track application performance and slow transactions
+- ✅ **Session Replay** - Record user sessions to understand issues (configurable)
+- ✅ **Source Maps** - Upload source maps for better error stack traces
+- ✅ **Global Error Boundaries** - User-friendly error handling
+- ✅ **Development Tools** - Built-in Sentry testing components
 
-To learn more about Next.js, take a look at the following resources:
+### File Structure
+```
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   └── SentryTestButton.tsx    # Sentry testing component
+│   │   ├── global-error.tsx            # Global error boundary
+│   │   ├── layout.tsx                  # Root layout
+│   │   └── page.tsx                    # Home page
+├── sentry.client.config.ts             # Client-side Sentry config
+├── sentry.server.config.ts             # Server-side Sentry config
+├── sentry.edge.config.ts               # Edge runtime Sentry config
+├── instrumentation.ts                  # Next.js instrumentation hook
+└── next.config.ts                      # Next.js + Sentry configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Testing Sentry Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The home page includes test buttons to verify Sentry is working:
+- **Test Sentry Error** - Throws and captures a test error
+- **Test Sentry Message** - Sends a test message to Sentry
 
-## Deploy on Vercel
+After clicking these buttons, check your Sentry dashboard to see the captured events.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Remove Sentry (If Not Needed)
+If you don't want Sentry integration:
+
+1. Remove Sentry dependencies:
+```bash
+npm uninstall @sentry/nextjs
+```
+
+2. Delete Sentry configuration files:
+```bash
+rm sentry.*.config.ts instrumentation.ts
+```
+
+3. Update `next.config.ts` to remove Sentry wrapper
+4. Remove Sentry-related components and imports
+
+### Styling
+- Tailwind CSS is pre-configured
+- Global styles in `src/app/globals.css`
+- Geist font family included
+
+## 📦 Available Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Add your Sentry environment variables in Vercel dashboard
+4. Deploy!
+
+### Other Platforms
+This is a standard Next.js app and can be deployed on any platform that supports Node.js:
+- Netlify
+- Railway
+- Render
+- AWS
+- Google Cloud Platform
+
+## 🤝 Contributing
+
+This is a starter template - feel free to fork and customize for your needs!
+
+## 📝 License
+
+MIT License - feel free to use this template for any project.
+
+---
+
+Happy vibe coding! 🎵✨
