@@ -2,12 +2,12 @@
 
 A modern Next.js starter template with Sentry integration for error tracking and performance monitoring. Perfect for rapid prototyping and vibe coding sessions.
 
-**🎯 Sentryを統合することで、エラーに悩まされることが少なくなり、開発に集中できます！**
-- リアルタイムエラー検知で問題を素早く発見
-- 詳細なスタックトレースで原因を特定
-- パフォーマンス監視で最適化ポイントを把握
+**🎯 Stay focused on development with integrated Sentry error tracking!**
+- Real-time error detection to quickly identify issues
+- Detailed stack traces for efficient debugging
+- Performance monitoring to identify optimization opportunities
 
-**🤖 さらに、Sentry MCP統合により、AIアシスタントが直接Sentryのエラー情報にアクセスして解決策を提案できます！**
+**🤖 Enhanced with Sentry MCP integration - AI assistants can directly access Sentry error data to provide targeted solutions!**
 
 ## 📋 Prerequisites
 
@@ -72,11 +72,13 @@ Open [http://localhost:3000](http://localhost:3000) to see your app running!
 - ✅ **Source Maps** - Upload source maps for better error stack traces
 - ✅ **Global Error Boundaries** - User-friendly error handling
 - ✅ **Development Tools** - Built-in Sentry testing components
+- ✅ **Cursor Rules** - Pre-configured AI assistant rules for Sentry integration
 
 ### File Structure
 ```
 ├── .cursor/
-│   └── mcp.json                        # Cursor MCP server config (project-specific)
+│   └── rules/
+│       └── sentry-error-handling.mdc  # Cursor AI rules for Sentry integration
 ├── src/
 │   ├── app/
 │   │   ├── components/
@@ -106,7 +108,7 @@ This template includes Sentry MCP (Model Context Protocol) server configuration,
 
 ### Supported AI Clients
 
-- **Cursor**: Use the included `mcp.json` configuration
+- **Cursor**: Pre-configured with project rules
 - **Claude Desktop**: Use the `claude_desktop_config.json` configuration
 - **Claude.ai**: Add `https://mcp.sentry.dev/sse` in Settings → Profile → Integrations
 - **Windsurf**: Configure via Cascade (CMD + L)
@@ -116,15 +118,15 @@ This template includes Sentry MCP (Model Context Protocol) server configuration,
 
 #### For Cursor
 
-**このプロジェクトには既にMCP設定が含まれています！**
+**This project includes pre-configured MCP settings!**
 
-- `.cursor/mcp.json` ファイルにSentry MCPサーバーが設定済み
-- プロジェクトを開くだけで自動的にSentry MCPが利用可能
-- 追加の設定は不要です
+- Cursor rules are already set up in `.cursor/rules/sentry-error-handling.mdc`
+- AI assistant will automatically prioritize Sentry MCP tools for error investigation
+- No additional configuration required
 
-#### その他のクライアント
-- **Claude.ai**: Settings → Profile → Integrations で `https://mcp.sentry.dev/sse` を追加
-- **Windsurf**: Cascade (CMD + L) の "Configure MCP" オプション
+#### For Other Clients
+- **Claude.ai**: Add `https://mcp.sentry.dev/sse` in Settings → Profile → Integrations
+- **Windsurf**: Use "Configure MCP" option in Cascade (CMD + L)
 - **VS Code with GitHub Copilot**: `CMD+Shift+P` → `MCP: Add Server`
 
 ### Example AI Prompts with MCP
@@ -140,25 +142,25 @@ Once configured, you can ask your AI assistant:
 
 The MCP server will prompt for OAuth authentication with Sentry when first accessed by your AI client.
 
-### MCP設定の確認方法
+### Verifying MCP Configuration
 
-1. **Cursor設定画面で確認**:
+1. **Check Cursor Settings**:
    - Cursor → Settings → MCP
-   - "Available Tools" セクションでSentryツールが表示されることを確認
+   - Verify Sentry tools appear in "Available Tools" section
 
-2. **ログの確認**:
-   - View → Output → "Cursor MCP" を選択
-   - エラーメッセージや接続状況を確認
+2. **Check Logs**:
+   - View → Output → "Cursor MCP"
+   - Monitor for error messages or connection status
 
-### トラブルシューティング
+### Troubleshooting
 
-**"Failed to create client" エラーの場合**:
-- Node.js 18以上がインストールされていることを確認
-- `which npx` でnpxのパスを確認し、フルパスを使用
+**"Failed to create client" error**:
+- Ensure Node.js 18+ is installed
+- Check `which npx` for npx path and use full path if needed
 
-**サーバー接続エラーの場合**:
-- インターネット接続を確認
-- `https://mcp.sentry.dev/sse` にアクセス可能か確認
+**Server connection errors**:
+- Verify internet connection
+- Test access to `https://mcp.sentry.dev/sse`
 
 ## 🎨 Customization
 
@@ -177,6 +179,7 @@ rm instrumentation-client.ts sentry.*.config.ts instrumentation.ts
 
 3. Update `next.config.ts` to remove Sentry wrapper
 4. Remove Sentry-related components and imports
+5. Delete `.cursor/rules/sentry-error-handling.mdc` if not needed
 
 ### Styling
 - Tailwind CSS is pre-configured

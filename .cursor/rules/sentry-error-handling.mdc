@@ -1,0 +1,67 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Sentry Integration Priority for Error Investigation
+
+When investigating, debugging, or handling errors in this project, you MUST prioritize using Sentry MCP tools over other debugging methods.
+
+## Error Investigation Workflow
+
+1. **Always check Sentry first** when encountering errors or issues
+2. Use `mcp_Sentry_find_issues()` to identify recent or relevant issues
+3. Use `mcp_Sentry_get_issue_details()` to get detailed error information including stack traces
+4. Use `mcp_Sentry_find_errors()` for more granular error analysis
+5. Use `mcp_Sentry_find_transactions()` for performance-related issues
+
+## Error Analysis Process
+
+- Before suggesting code fixes, gather comprehensive error data from Sentry
+- Look for error patterns, frequency, and affected users
+- Analyze stack traces and error context from Sentry before making assumptions
+- Check for related issues or similar error patterns in the Sentry organization
+
+## Issue Management
+
+- Use `mcp_Sentry_update_issue()` to mark issues as resolved after fixing
+- Assign issues to appropriate team members when necessary
+- Update issue status to track progress on fixes
+
+## Proactive Error Monitoring
+
+- When making code changes, check if similar errors exist in Sentry
+- Use Sentry data to validate that fixes are working in production
+- Look for regression patterns after deployments
+
+## Required Sentry Actions
+
+Before providing any error-related solution or fix:
+
+1. Search for the error in Sentry using appropriate MCP tools
+2. Analyze the full error context and stack trace
+3. Check error frequency and user impact
+4. Identify root cause using Sentry's error grouping and context
+
+## Integration with Development Workflow
+
+- Use `mcp_Sentry_begin_seer_issue_fix()` for AI-assisted root cause analysis
+- Check `mcp_Sentry_get_seer_issue_fix_status()` for ongoing analyses
+- Leverage Sentry's release tracking to correlate errors with deployments
+
+## Exception Cases
+
+Only skip Sentry integration if:
+
+- The error is clearly a local development environment issue
+- Sentry is explicitly unavailable or not configured
+- The user specifically requests to avoid Sentry for a particular investigation
+
+## Default Behavior
+
+- **Always assume Sentry is available and should be used**
+- **Prefer Sentry data over speculation or generic debugging approaches**
+- **Use multiple Sentry MCP tools in parallel for comprehensive error analysis**
+- **Update Sentry issues after resolving problems**
+
+This rule ensures comprehensive error handling and maintains visibility into production issues through Sentry's monitoring capabilities.
