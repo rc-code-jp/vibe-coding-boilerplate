@@ -84,7 +84,7 @@ Open [http://localhost:3000](http://localhost:3000) to see your app running!
 │   │   ├── global-error.tsx            # Global error boundary
 │   │   ├── layout.tsx                  # Root layout
 │   │   └── page.tsx                    # Home page
-├── sentry.client.config.ts             # Client-side Sentry config
+├── instrumentation-client.ts           # Client-side Sentry config
 ├── sentry.server.config.ts             # Server-side Sentry config
 ├── sentry.edge.config.ts               # Edge runtime Sentry config
 ├── instrumentation.ts                  # Next.js instrumentation hook
@@ -172,7 +172,7 @@ npm uninstall @sentry/nextjs
 
 2. Delete Sentry configuration files:
 ```bash
-rm sentry.*.config.ts instrumentation.ts
+rm instrumentation-client.ts sentry.*.config.ts instrumentation.ts
 ```
 
 3. Update `next.config.ts` to remove Sentry wrapper
