@@ -2,6 +2,8 @@
 
 A modern Next.js starter template with Sentry integration for error tracking and performance monitoring. Perfect for rapid prototyping and vibe coding sessions.
 
+> **📝 Getting Started**: This is a starter template. We recommend clearing this README and replacing it with your project-specific documentation before beginning development.
+
 **🎯 Stay focused on development with integrated Sentry error tracking!**
 - Real-time error detection to quickly identify issues
 - Detailed stack traces for efficient debugging
@@ -16,6 +18,25 @@ A modern Next.js starter template with Sentry integration for error tracking and
 
 ## 🚀 Quick Start
 
+### Option 1: Automated Setup (Recommended)
+
+Run the setup script to automatically configure everything:
+
+```bash
+git clone https://github.com/your-username/vibe-coding-boilerplate.git
+cd vibe-coding-boilerplate
+./setup.sh
+```
+
+The script will:
+- Clear this README and replace with a basic project template
+- Install dependencies
+- Copy environment configuration
+- Optionally configure Sentry settings
+- Start the development server
+
+### Option 2: Manual Setup
+
 ### 1. Clone the Repository
 
 ```bash
@@ -29,12 +50,20 @@ cd vibe-coding-boilerplate
 npm install
 ```
 
-### 3. Set Up Sentry (Optional but Recommended)
+### 3. Set Up Environment Variables
+
+Copy the example environment file and configure your settings:
+
+```bash
+cp env.example .env.local
+```
+
+### 4. Set Up Sentry (Optional but Recommended)
 
 1. Create a Sentry account at [sentry.io](https://sentry.io)
 2. Create a new Next.js project in your Sentry dashboard
 3. Copy your DSN from the project settings
-4. Create a `.env.local` file in the root directory:
+4. Update your `.env.local` file with your Sentry configuration:
 
 ```bash
 # Sentry Configuration (Required)
@@ -48,7 +77,7 @@ SENTRY_AUTH_TOKEN=your-auth-token
 
 > **Note**: If you skip Sentry setup, the app will still work perfectly. Error tracking features will simply be disabled.
 
-### 4. Start Development Server
+### 5. Start Development Server
 
 ```bash
 npm run dev
