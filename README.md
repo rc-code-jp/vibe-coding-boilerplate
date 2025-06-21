@@ -4,14 +4,14 @@ Modern Next.js starter with Sentry integration for error tracking and AI-assiste
 
 ## 🎵 The Vibe Coding Experience
 
-**エラーに悩まされない開発体験を実現**
+**Error-Free Development Flow**
 
-Sentryの統合により、エラーを素早く特定・解決できるため、vibe coding中にエラーで手を止められることがありません。コーディングのフローを維持しながら、安心して開発に集中できます。
+With Sentry integration, you can quickly identify and resolve errors, ensuring your vibe coding sessions are never interrupted by debugging frustrations. Maintain your coding flow while developing with confidence.
 
-- 🚀 **即座のエラー検知**: リアルタイムでエラーを捕捉
-- 🔍 **AI支援デバッグ**: Sentry MCPによる自動的な根本原因分析
-- ⚡ **高速解決**: 詳細なスタックトレースで迅速な問題解決
-- 🎯 **集中力維持**: エラー調査に時間を取られず、創造的なコーディングに専念
+- 🚀 **Instant Error Detection**: Real-time error capture and notifications
+- 🔍 **AI-Assisted Debugging**: Automatic root cause analysis via Sentry MCP
+- ⚡ **Rapid Resolution**: Detailed stack traces for lightning-fast problem solving
+- 🎯 **Focus Preservation**: Spend time creating, not debugging
 
 > **📝 Starter Template**: Clear this README and replace with your project documentation before development.
 
