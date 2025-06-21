@@ -2,20 +2,31 @@
 
 Modern Next.js starter with Sentry integration for error tracking and AI-assisted debugging.
 
+## 🎵 The Vibe Coding Experience
+
+**エラーに悩まされない開発体験を実現**
+
+Sentryの統合により、エラーを素早く特定・解決できるため、vibe coding中にエラーで手を止められることがありません。コーディングのフローを維持しながら、安心して開発に集中できます。
+
+- 🚀 **即座のエラー検知**: リアルタイムでエラーを捕捉
+- 🔍 **AI支援デバッグ**: Sentry MCPによる自動的な根本原因分析
+- ⚡ **高速解決**: 詳細なスタックトレースで迅速な問題解決
+- 🎯 **集中力維持**: エラー調査に時間を取られず、創造的なコーディングに専念
+
 > **📝 Starter Template**: Clear this README and replace with your project documentation before development.
 
 ## 🚀 Quick Start
 
 **Automated Setup (Recommended):**
 ```bash
-git clone https://github.com/your-username/vibe-coding-boilerplate.git
+git clone https://github.com/rc-code-jp/vibe-coding-boilerplate.git
 cd vibe-coding-boilerplate
 ./setup.sh
 ```
 
 **Manual Setup:**
 ```bash
-git clone https://github.com/your-username/vibe-coding-boilerplate.git
+git clone https://github.com/rc-code-jp/vibe-coding-boilerplate.git
 cd vibe-coding-boilerplate
 npm install
 cp env.example .env.local
