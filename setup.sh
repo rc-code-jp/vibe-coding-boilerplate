@@ -89,19 +89,7 @@ EOF
 fi
 
 echo ""
-echo "📦 Step 2: Dependencies"
-echo "----------------------"
-
-if ask_yes_no "📥 Install npm dependencies?" "y"; then
-    echo "Installing dependencies..."
-    npm install
-    echo "✅ Dependencies installed"
-else
-    echo "⚠️  Skipping dependency installation"
-fi
-
-echo ""
-echo "🔧 Step 3: Environment Configuration"
+echo "🔧 Step 2: Environment Configuration"
 echo "-----------------------------------"
 
 if [ -f "env.example" ]; then
@@ -163,7 +151,60 @@ else
 fi
 
 echo ""
-echo "🧹 Step 4: Cleanup"
+echo "🔧 Step 3: Sentry CDM Configuration (Optional)"
+echo "----------------------------------------------"
+
+if ask_yes_no "🤖 Configure Sentry CDM (Claude Desktop Model) integration?" "n"; then
+    echo ""
+    echo "Setting up Sentry CDM configuration..."
+    
+    # Create claude_desktop_config.json
+    cat > claude_desktop_config.json << 'EOF'
+{
+  "mcpServers": {
+    "sentry": {
+      "command": "npx",
+      "args": [
+        "@sentry/mcp-server"
+      ]
+    }
+  }
+}
+EOF
+    
+    echo "✅ claude_desktop_config.json created"
+    echo ""
+    echo "📋 Manual CDM Setup Instructions:"
+    echo "1. Copy the contents of claude_desktop_config.json"
+    echo "2. Open Claude Desktop settings"
+    echo "3. Go to the MCP section"
+    echo "4. Paste the configuration"
+    echo "5. Restart Claude Desktop"
+    echo ""
+    echo "For other AI clients:"
+    echo "- Claude.ai: Add https://mcp.sentry.dev/sse in Settings → Profile → Integrations"
+    echo "- Windsurf: Use 'Configure MCP' option in Cascade (CMD + L)"
+    echo "- VS Code with GitHub Copilot: CMD+Shift+P → 'MCP: Add Server'"
+    echo ""
+else
+    echo "⚠️  Sentry CDM configuration skipped"
+fi
+
+echo ""
+echo "📦 Step 4: Dependencies"
+echo "----------------------"
+
+if ask_yes_no "📥 Install npm dependencies? (This may take a few minutes)" "y"; then
+    echo "Installing dependencies..."
+    npm install
+    echo "✅ Dependencies installed"
+else
+    echo "⚠️  Skipping dependency installation"
+    echo "⚠️  You'll need to run 'npm install' manually before starting development"
+fi
+
+echo ""
+echo "🧹 Step 5: Cleanup"
 echo "------------------"
 
 if ask_yes_no "🗑️  Remove this setup script?" "y"; then
@@ -179,27 +220,39 @@ echo ""
 echo "Your project is ready for development!"
 echo ""
 
-if ask_yes_no "🚀 Start the development server now?" "y"; then
-    echo ""
-    echo "Starting development server..."
-    echo "🌐 Opening http://localhost:3000"
-    echo ""
-    echo "Press Ctrl+C to stop the server"
-    echo ""
-    
-    # Try to open browser (works on macOS and most Linux distributions)
-    if command -v open > /dev/null; then
-        # macOS
-        (sleep 3 && open http://localhost:3000) &
-    elif command -v xdg-open > /dev/null; then
-        # Linux
-        (sleep 3 && xdg-open http://localhost:3000) &
+# Check if dependencies were installed before offering to start dev server
+if [ -d "node_modules" ]; then
+    if ask_yes_no "🚀 Start the development server now?" "y"; then
+        echo ""
+        echo "Starting development server..."
+        echo "🌐 Opening http://localhost:3000"
+        echo ""
+        echo "Press Ctrl+C to stop the server"
+        echo ""
+        
+        # Try to open browser (works on macOS and most Linux distributions)
+        if command -v open > /dev/null; then
+            # macOS
+            (sleep 3 && open http://localhost:3000) &
+        elif command -v xdg-open > /dev/null; then
+            # Linux
+            (sleep 3 && xdg-open http://localhost:3000) &
+        fi
+        
+        npm run dev
+    else
+        echo ""
+        echo "To start development:"
+        echo "  npm run dev"
+        echo ""
+        echo "Then open http://localhost:3000 in your browser"
+        echo ""
+        echo "Happy coding! 🎵✨"
     fi
-    
-    npm run dev
 else
     echo ""
-    echo "To start development:"
+    echo "⚠️  Dependencies not installed. To start development:"
+    echo "  npm install"
     echo "  npm run dev"
     echo ""
     echo "Then open http://localhost:3000 in your browser"
