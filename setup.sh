@@ -204,7 +204,56 @@ else
 fi
 
 echo ""
-echo "🧹 Step 5: Cleanup"
+echo "📝 Step 5: Development Files"
+echo "-----------------------------"
+
+if ask_yes_no "📋 Create prompt.txt for development notes and prompts?" "y"; then
+    cat > prompt.txt << 'EOF'
+# Development Prompts & Notes
+
+This file is for writing prompts, notes, and ideas during development.
+
+## Usage
+- Draft prompts for AI assistants
+- Development ideas and notes
+- TODO lists
+- Design notes
+- Project planning
+
+## Examples
+```
+Please implement the following features:
+- User authentication system
+- Database integration
+- Responsive design
+- API endpoints
+```
+
+```
+Bug to fix:
+- Login form validation not working
+- Mobile layout issues on iPhone
+```
+
+```
+Ideas for next sprint:
+- Add dark mode toggle
+- Implement search functionality
+- Performance optimization
+```
+
+---
+This file is excluded from git tracking (.gitignore)
+EOF
+    echo "✅ prompt.txt created for development notes"
+    echo "   📋 Use this file for prompts, notes, and development ideas"
+    echo "   🔒 This file is git-ignored and won't be committed"
+else
+    echo "⚠️  prompt.txt creation skipped"
+fi
+
+echo ""
+echo "🧹 Step 6: Cleanup"
 echo "------------------"
 
 if ask_yes_no "🗑️  Remove this setup script?" "y"; then

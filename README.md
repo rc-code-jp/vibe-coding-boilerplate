@@ -41,6 +41,7 @@ Open [http://localhost:3000](http://localhost:3000) to start coding!
 - **Tailwind CSS** for styling
 - **Sentry** for error tracking
 - **AI Integration** - Sentry MCP for AI-assisted debugging
+- **Development Tools** - `prompt.txt` for notes and prompts (git-ignored)
 
 ---
 
@@ -68,6 +69,7 @@ NEXT_PUBLIC_SENTRY_DSN=https://your-dsn@sentry.io/your-project-id
 - ✅ Source maps for debugging
 - ✅ AI assistant integration
 - ✅ Development testing tools
+- ✅ Development notes file (`prompt.txt`) - git-ignored for personal use
 
 ## Testing Sentry
 
@@ -106,6 +108,12 @@ npm run build    # Production build
 npm run start    # Production server
 npm run lint     # ESLint
 ```
+
+## Development Files
+- **`prompt.txt`**: Personal notes, prompts, and development ideas
+  - Automatically created during setup
+  - Git-ignored for privacy
+  - Use for AI prompts, TODO lists, and project notes
 
 ## Remove Sentry
 ```bash
