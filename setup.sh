@@ -207,11 +207,15 @@ echo ""
 echo "📝 Step 5: Development Files"
 echo "-----------------------------"
 
-if ask_yes_no "📋 Create prompt.txt for development notes and prompts?" "y"; then
-    cat > prompt.txt << 'EOF'
+if ask_yes_no "📋 Create notepads.txt for development notes and prompts?" "y"; then
+    cat > notepads.txt << 'EOF'
 # Development Prompts & Notes
 
 This file is for writing prompts, notes, and ideas during development.
+
+## Cursor Users
+If you're using Cursor editor, we recommend using the built-in Notepads feature.
+You can still use this file as a backup or for version-controlled notes.
 
 ## Usage
 - Draft prompts for AI assistants
@@ -245,11 +249,12 @@ Ideas for next sprint:
 ---
 This file is excluded from git tracking (.gitignore)
 EOF
-    echo "✅ prompt.txt created for development notes"
+    echo "✅ notepads.txt created for development notes"
     echo "   📋 Use this file for prompts, notes, and development ideas"
+    echo "   🚀 Cursor users: Consider using built-in Notepads feature"
     echo "   🔒 This file is git-ignored and won't be committed"
 else
-    echo "⚠️  prompt.txt creation skipped"
+    echo "⚠️  notepads.txt creation skipped"
 fi
 
 echo ""
